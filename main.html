@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DeepFocus</title>
+
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        />
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Inter", sans-serif;
+                background: #ffffff;
+                color: #1e293b;
+                line-height: 1.7;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .container {
+                width: 90%;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            /* HERO */
+
+            .hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                background:
+                    radial-gradient(
+                        circle at top right,
+                        #dbeafe 0%,
+                        transparent 30%
+                    ),
+                    radial-gradient(
+                        circle at bottom left,
+                        #bfdbfe 0%,
+                        transparent 25%
+                    ),
+                    #ffffff;
+                padding: 60px 20px;
+            }
+
+            .hero-content {
+                max-width: 850px;
+            }
+
+            .badge {
+                display: inline-block;
+                background: #eff6ff;
+                color: #2563eb;
+                padding: 8px 18px;
+                border-radius: 999px;
+                font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 24px;
+                border: 1px solid #bfdbfe;
+            }
+
+            .hero h1 {
+                font-size: clamp(3rem, 8vw, 6rem);
+                font-weight: 800;
+                color: #0f172a;
+                letter-spacing: -2px;
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                color: #475569;
+                max-width: 700px;
+                margin: 0 auto 40px;
+            }
+
+            .hero-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                padding: 16px 28px;
+                border-radius: 14px;
+                font-size: 16px;
+                font-weight: 600;
+                transition: 0.25s ease;
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .btn-primary {
+                background: #2563eb;
+                color: white;
+                box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            }
+
+            .btn-primary:hover {
+                background: #1d4ed8;
+                transform: translateY(-2px);
+            }
+
+            .btn-secondary {
+                background: white;
+                color: #0f172a;
+                border: 1px solid #dbeafe;
+            }
+
+            .btn-secondary:hover {
+                background: #f8fafc;
+                transform: translateY(-2px);
+            }
+
+            /* SECTION */
+
+            section {
+                padding: 100px 0;
+            }
+
+            .section-title {
+                text-align: center;
+                margin-bottom: 18px;
+                font-size: 2.7rem;
+                font-weight: 800;
+                color: #0f172a;
+            }
+
+            .section-subtitle {
+                text-align: center;
+                max-width: 800px;
+                margin: 0 auto 70px;
+                color: #64748b;
+                font-size: 1.1rem;
+            }
+
+            /* ABOUT */
+
+            .about-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 24px;
+            }
+
+            .card {
+                background: white;
+                border: 1px solid #e2e8f0;
+                border-radius: 22px;
+                padding: 32px;
+                transition: 0.25s ease;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+            }
+
+            .card-icon {
+                width: 58px;
+                height: 58px;
+                border-radius: 16px;
+                background: #eff6ff;
+                color: #2563eb;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .card h3 {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+                color: #0f172a;
+            }
+
+            .card p {
+                color: #64748b;
+            }
+
+            /* SCREENSHOTS */
+
+            .screenshots-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 30px;
+            }
+
+            .phone-card {
+                background: #f8fafc;
+                border-radius: 32px;
+                padding: 20px;
+                border: 1px solid #e2e8f0;
+                text-align: center;
+            }
+
+            .phone-frame {
+                width: 100%;
+                border-radius: 28px;
+                overflow: hidden;
+                background: #e2e8f0;
+                aspect-ratio: 9 / 19.5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .phone-frame img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .placeholder {
+                color: #64748b;
+                padding: 20px;
+                font-size: 14px;
+            }
+
+            .phone-card h3 {
+                margin-top: 20px;
+                margin-bottom: 10px;
+                color: #0f172a;
+                font-size: 1.2rem;
+            }
+
+            .phone-card p {
+                color: #64748b;
+                font-size: 0.95rem;
+            }
+
+            /* HOW */
+
+            .steps {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 24px;
+            }
+
+            .step {
+                padding: 32px;
+                border-radius: 22px;
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+            }
+
+            .step-number {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                background: #2563eb;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            .step h3 {
+                margin-bottom: 10px;
+                color: #0f172a;
+            }
+
+            .step p {
+                color: #64748b;
+            }
+
+            /* FOOTER */
+
+            footer {
+                padding: 60px 20px;
+                text-align: center;
+                color: #64748b;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            footer strong {
+                color: #0f172a;
+            }
+
+            /* RESPONSIVE */
+
+            @media (max-width: 768px) {
+                .hero {
+                    min-height: auto;
+                    padding-top: 120px;
+                    padding-bottom: 120px;
+                }
+
+                .hero p {
+                    font-size: 1rem;
+                }
+
+                .section-title {
+                    font-size: 2rem;
+                }
+
+                .btn {
+                    width: 100%;
+                    justify-content: center;
+                }
+
+                .hero-buttons {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="badge">AI-Assisted Focus & Productivity App</div>
+
+                <h1>DeepFocus</h1>
+
+                <p>
+                    A clean and adaptive focus app that helps users plan deep
+                    work sessions, reflect after working, and receive simple
+                    personalized recommendations without overwhelming dashboards
+                    or complex analytics.
+                </p>
+
+                <div class="hero-buttons">
+                    <!-- ADD YOUR GOOGLE PLAY LINK -->
+                    <a
+                        href="https://play.google.com/store/apps/details?id=com.gadielpugh.deepfocus"
+                        class="btn btn-primary"
+                    >
+                        <i class="fa-brands fa-google-play"></i>
+                        Download
+                    </a>
+
+                    <!-- ADD YOUR GITHUB REPOSITORY LINK -->
+                    <a
+                        href="https://github.com/GadielPugh/deep_work_app.git"
+                        class="btn btn-secondary"
+                    >
+                        <i class="fa-brands fa-github"></i>
+                        Repository
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section>
+            <div class="container">
+                <h2 class="section-title">What is DeepFocus?</h2>
+
+                <p class="section-subtitle">
+                    DeepFocus is designed to help users focus with clarity
+                    instead of noise. The app gives one practical recommendation
+                    at a time and gradually adapts to the user's real habits
+                    through local personalization.
+                </p>
+
+                <div class="about-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+
+                        <h3>Personalized Recommendations</h3>
+
+                        <p>
+                            The app adapts over time using completed sessions,
+                            reflection notes, time patterns, category success
+                            rates, and coach feedback.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+
+                        <h3>Simple Focus Sessions</h3>
+
+                        <p>
+                            Create focus sessions with a category, intention,
+                            and duration, then track how the session actually
+                            went.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+
+                        <h3>Reflection-Based Learning</h3>
+
+                        <p>
+                            After each session, users can reflect on what helped
+                            or blocked their focus, helping the system improve
+                            over time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREENSHOTS -->
+        <section style="background: #f8fbff">
+            <div class="container">
+                <h2 class="section-title">App Screens</h2>
+
+                <p class="section-subtitle">
+                    Replace the placeholder image paths below with your own
+                    screenshots. Simply place your JPG or PNG files in the same
+                    folder as this HTML file.
+                </p>
+
+                <div class="screenshots-grid">
+                    <!-- SCREEN 1 -->
+                    <div class="phone-card">
+                        <div class="phone-frame">
+                            <!-- Replace main.jpg -->
+                            <img src="img/main.png" alt="Main Screen" />
+
+                            <!-- If image not found, comment img above and uncomment below -->
+                            <!--
+            <div class="placeholder">
+              Add screenshot: main.jpg
+            </div>
+            -->
+                        </div>
+
+                        <h3>Main Dashboard</h3>
+
+                        <p>
+                            Quick access to focus sessions with lightweight
+                            statistics and personalized recommendations.
+                        </p>
+                    </div>
+
+                    <!-- SCREEN 2 -->
+                    <div class="phone-card">
+                        <div class="phone-frame">
+                            <img
+                                src="img/categories.png"
+                                alt="Categories Screen"
+                            />
+                        </div>
+
+                        <h3>Categories</h3>
+
+                        <p>
+                            Organize focus sessions by category and start work
+                            sessions with a clear intention.
+                        </p>
+                    </div>
+
+                    <!-- SCREEN 3 -->
+                    <div class="phone-card">
+                        <div class="phone-frame">
+                            <img
+                                src="img/reflection.png"
+                                alt="Reflection Screen"
+                            />
+                        </div>
+
+                        <h3>Reflection</h3>
+
+                        <p>
+                            Reflect on whether the session was completed
+                            successfully and what factors affected
+                            concentration.
+                        </p>
+                    </div>
+
+                    <!-- SCREEN 4 -->
+                    <div class="phone-card">
+                        <div class="phone-frame">
+                            <img src="img/history.png" alt="History Screen" />
+                        </div>
+
+                        <h3>History</h3>
+
+                        <p>
+                            Browse previous focus sessions and review past
+                            productivity patterns over time.
+                        </p>
+                    </div>
+
+                    <!-- SCREEN 5 -->
+                    <div class="phone-card">
+                        <div class="phone-frame">
+                            <img src="img/coach.png" alt="Insights Screen" />
+                        </div>
+
+                        <h3>Insights & Coach</h3>
+
+                        <p>
+                            Receive clear and human-friendly insights instead of
+                            overwhelming productivity dashboards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section>
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+
+                <p class="section-subtitle">
+                    DeepFocus is intentionally designed to stay simple and
+                    actionable.
+                </p>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+
+                        <h3>Start a Session</h3>
+
+                        <p>
+                            Choose a category, define your intention, and begin
+                            a focused work session.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+
+                        <h3>Reflect Afterwards</h3>
+
+                        <p>
+                            Mark whether the session was successful and describe
+                            what helped or interrupted your focus.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+
+                        <h3>Receive Better Guidance</h3>
+
+                        <p>
+                            The app gradually personalizes recommendations using
+                            local learning and real usage behavior.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH -->
+        <section style="background: #f8fbff">
+            <div class="container">
+                <h2 class="section-title">Built With</h2>
+
+                <p class="section-subtitle">
+                    DeepFocus combines simple UX design with adaptive local
+                    personalization.
+                </p>
+
+                <div class="about-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-brands fa-flutter"></i>
+                        </div>
+
+                        <h3>Flutter & Dart</h3>
+
+                        <p>
+                            Cross-platform mobile development with a clean and
+                            responsive user experience.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+
+                        <h3>Local-First Design</h3>
+
+                        <p>
+                            Sessions, reflections, feedback, and personalization
+                            data are stored locally on the device.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+
+                        <h3>Experimental ML Pipeline</h3>
+
+                        <p>
+                            Includes a shadow-mode machine learning pipeline for
+                            future model validation and personalization
+                            improvements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>Built by <strong>Gadiel Pugh</strong></p>
+
+            <p style="margin-top: 10px">
+                DeepFocus — helping users take the next useful step.
+            </p>
+        </footer>
+    </body>
+</html>
